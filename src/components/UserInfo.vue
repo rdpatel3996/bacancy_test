@@ -1,12 +1,14 @@
 <template>
-  <div v-if="isUserLoaded()" class="panel panel-default">
-    <h4>@{{localUser.username}}</h4>
-    <h2>{{localUser.name}}</h2>
-    <div>{{localUser.email}}</div>
-    <div>{{localUser.address.street}}, {{localUser.address.suite}}, {{localUser.address.city}}, {{localUser.address.zipcode}}</div>
-    <div>{{localUser.phone}}</div>
-    <div>{{localUser.website}}</div>
-    <div>{{localUser.company.name}}</div>
+  <div v-if="isUserLoaded()">
+    <b-card align="center">
+      <h4>@{{localUser.username}}</h4>
+      <h2>{{localUser.name}}</h2>
+      <div>{{localUser.email}}</div>
+      <div>{{localUser.address.street}}, {{localUser.address.suite}}, {{localUser.address.city}}, {{localUser.address.zipcode}}</div>
+      <div>{{localUser.phone}}</div>
+      <div>{{localUser.website}}</div>
+      <div>{{localUser.company.name}}</div>
+    </b-card>
   </div>
 </template>
 

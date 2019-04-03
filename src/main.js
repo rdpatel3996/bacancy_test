@@ -13,7 +13,10 @@ Vue.use(BootstrapVue)
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/', component: PostLists},
+  {
+    path: '/',
+    component: PostLists
+  },
   {
     path: '/UserInfo/:userId', 
     name: 'user',
@@ -29,6 +32,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
