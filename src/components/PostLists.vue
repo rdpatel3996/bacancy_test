@@ -1,18 +1,21 @@
 <template>
   <div>
     <div>
-      <div class="post panel panel-default" v-for="post in posts" :key="post.id">
-        <div class="post-title panel-body">
+      <b-card align="center" v-for="post in posts" :key="post.id">
+        <h4 class="post-title">
           <router-link :to="{name: 'post', params:{postId: `${post.id}`, user: users[post.userId], post}}">
-        {{ post.title }}</router-link></div>
-        <div class="post-body">{{ post.body }}</div>
-        <div clss="user-name">
-          <router-link :to="{name: 'user', params: { userId:`${post.userId}`, user: users[post.userId] }}">
-            {{ users[post.userId].name }}
+          {{ post.title }}
           </router-link>
-        </div>
-      </div>
-      <router-view></router-view>
+        </h4>
+        <div class="post-body">{{ post.body }}</div>
+        <b-row>
+          <b-col lg="4" offset-lg="8" class="user-name">
+            <router-link :to="{name: 'user', params: { userId:`${post.userId}`, user: users[post.userId] }}">
+              @{{users[post.userId].username}}({{ users[post.userId].name }})
+            </router-link>
+          </b-col>
+        </b-row>
+      </b-card>
     </div>
   </div>
 </template>

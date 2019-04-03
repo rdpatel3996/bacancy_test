@@ -1,13 +1,27 @@
 <template>
-  <div v-if="isPostLoaded()" class="panel panel-default">
-    <h2>{{localPost.title}}</h2>
-    <div>{{localPost.body}}</div>
-    <div clss="user-name">
-      <router-link :to="{name: 'user', params: { userId:`${localPost.userId}`, user: localUser }}">
-        @{{localUser.username}}({{ localUser.name }})
-      </router-link>
-    </div>
-    <div v-for="comment in comments" :key="comment.id">{{comment.body}}</div>
+  <div v-if="isPostLoaded()">
+    <b-card align="center">
+      <h2>{{localPost.title}}</h2>
+      <b-row align-h="center">
+        <b-col lg="10">
+          {{localPost.body}}
+        </b-col>
+      </b-row>
+      <div clss="user-name">
+        <router-link :to="{name: 'user', params: { userId:`${localPost.userId}`, user: localUser }}">
+          @{{localUser.username}}({{ localUser.name }})
+        </router-link>
+      </div>
+      <b-row align-h="center">
+        <b-col lg="11">
+          <div style="text-align:left" v-for="comment in comments" :key="comment.id">
+            <hr/>
+            {{comment.body}}
+          </div>
+          <hr/>
+        </b-col>
+      </b-row>
+    </b-card>
   </div>
 </template>
 
