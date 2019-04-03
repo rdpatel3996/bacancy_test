@@ -4,6 +4,20 @@ import _ from 'lodash'
 
 class PostsService {
 
+  getPost(id) {
+    return axios.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+  }
+
+  getCommentsForPost(id) {
+    return axios({
+      method: 'get',
+      url: 'https://jsonplaceholder.typicode.com/comments',
+      params: {
+        postId: id
+      }
+    })
+  }
+
   getUser(id) {
     return axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
   }

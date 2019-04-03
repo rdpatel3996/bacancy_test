@@ -2,10 +2,17 @@
   <div>
     <div>
       <div class="post panel panel-default" v-for="post in posts" :key="post.id">
-        <div class="post-title panel-body">{{ post.title }}</div>
+        <div class="post-title panel-body">
+          <router-link :to="{name: 'post', params:{postId: `${post.id}`, user: users[post.userId], post}}">
+        {{ post.title }}</router-link></div>
         <div class="post-body">{{ post.body }}</div>
-        <div clss="user-name">{{ users[post.userId].name }}</div>
+        <div clss="user-name">
+          <router-link :to="{name: 'user', params: { userId:`${post.userId}`, user: users[post.userId] }}">
+            {{ users[post.userId].name }}
+          </router-link>
+        </div>
       </div>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -15,7 +22,7 @@
 import postService from '../services/posts'
 
 export default {
-  name: 'HomePage',
+  name: 'PostLists',
   data() {
     return {
       posts: [],
@@ -25,7 +32,6 @@ export default {
   created() {
       postService.getPosts()
         .then((res) => {
-          console.log(res)
           this.posts = res.posts
           this.users = res.users
         })
