@@ -18,6 +18,10 @@ const routes = [
     component: PostLists
   },
   {
+    path: '*',
+    component: PostLists
+  },
+  {
     path: '/UserInfo/:userId', 
     name: 'user',
     component: UserInfo,
