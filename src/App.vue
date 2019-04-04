@@ -2,7 +2,7 @@
   <div id="app"> 
     <b-container>
       <b-row class="justify-content-md-center">
-        <router-link to="/">Home</router-link>
+        <router-link to="/"><ins>Home</ins></router-link>
       </b-row>
       <b-row class="justify-content-md-center">
         <b-col>

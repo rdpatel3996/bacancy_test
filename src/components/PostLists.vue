@@ -1,21 +1,31 @@
 <template>
   <div>
     <div>
-      <b-card align="center" v-for="post in posts" :key="post.id">
-        <h4 class="post-title">
+      <b-card class="post-card" align="center" v-for="post in posts" :key="post.id">
+        
+        <b-card-title class="post-title">
           <router-link :to="{name: 'post', params:{postId: `${post.id}`, user: users[post.userId], post}}">
-          {{ post.title }}
+          <ins>{{ post.title }}</ins>
           </router-link>
-        </h4>
-        <div class="post-body">{{ post.body }}</div>
+        </b-card-title>
+        
+        <b-row align-h="center">
+          <b-col lg="8">
+            <div class="post-body">{{ post.body }}</div>
+          </b-col>
+        </b-row>
+
+        <br>
         <b-row>
           <b-col lg="4" offset-lg="8" class="user-name">
             <router-link :to="{name: 'user', params: { userId:`${post.userId}`, user: users[post.userId] }}">
-              @{{users[post.userId].username}}({{ users[post.userId].name }})
+              <ins>@{{users[post.userId].username}}({{ users[post.userId].name }})</ins>
             </router-link>
           </b-col>
         </b-row>
+
       </b-card>
+
     </div>
   </div>
 </template>
@@ -49,9 +59,9 @@ export default {
   font-weight: bold
 }
 
-.post {
-  padding-top: 10px;
-  padding-bottom: 10px;
+.post-card {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .post-body {

@@ -1,17 +1,25 @@
 <template>
   <div v-if="isPostLoaded()">
-    <b-card align="center">
-      <h2>{{localPost.title}}</h2>
+    <b-card class="post-card" align="center">
+
+      <h3 class="post-title">{{localPost.title}}</h3>
+      
+      <br>
       <b-row align-h="center">
         <b-col lg="10">
           {{localPost.body}}
         </b-col>
       </b-row>
-      <div clss="user-name">
-        <router-link :to="{name: 'user', params: { userId:`${localPost.userId}`, user: localUser }}">
-          @{{localUser.username}}({{ localUser.name }})
-        </router-link>
-      </div>
+      
+      <br>   
+      <b-row>
+        <b-col lg="4" offset-lg="8" class="user-name">
+          <router-link :to="{name: 'user', params: { userId:`${localPost.userId}`, user: localUser }}">
+            <ins>@{{localUser.username}}({{ localUser.name }})</ins>
+          </router-link>
+        </b-col>
+      </b-row>
+
       <b-row align-h="center">
         <b-col lg="11">
           <div style="text-align:left" v-for="comment in comments" :key="comment.id">
@@ -21,6 +29,7 @@
           <hr/>
         </b-col>
       </b-row>
+    
     </b-card>
   </div>
 </template>
@@ -89,7 +98,15 @@ export default {
 </script>
 
 <style scoped>
-.username {
+.post-card {
+  margin-top: 10px;
+}
+
+.post-title {
   font-weight: bold;
+}
+.user-name {
+  font-weight: bold;
+  text-align: right;
 }
 </style>

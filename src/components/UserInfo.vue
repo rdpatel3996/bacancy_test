@@ -1,8 +1,8 @@
 <template>
   <div v-if="isUserLoaded()">
-    <b-card align="center">
-      <h4>@{{localUser.username}}</h4>
-      <h2>{{localUser.name}}</h2>
+    <b-card class="user-card" align="center">
+      <h4 class='username'>@{{localUser.username}}</h4>
+      <h2 class='name'>{{localUser.name}}</h2>
       <div>{{localUser.email}}</div>
       <div>{{localUser.address.street}}, {{localUser.address.suite}}, {{localUser.address.city}}, {{localUser.address.zipcode}}</div>
       <div>{{localUser.phone}}</div>
@@ -52,7 +52,13 @@ export default {
 </script>
 
 <style scoped>
+.user-card {
+  margin-top: 10px;
+}
 .username {
+  font-weight: bold;
+}
+.name {
   font-weight: bold;
 }
 </style>
